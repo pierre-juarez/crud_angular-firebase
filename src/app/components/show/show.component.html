@@ -1,0 +1,26 @@
+<h1>Show post's</h1>
+<div class="d-grid gap-2 mt-4">
+  <button routerLink="/create" class="btn btn-success">Create</button>
+
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Autor</th>
+        <th>Content</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of Posts">
+        <td>{{ item.title }}</td>
+        <td>{{ item.author }}</td>
+        <td>{{ item.content }}</td>
+        <td class="text-center">
+          <button routerLink="edit/{{item.id}}" class="btn btn-warning mx-1"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button (click)="deletePost(item)" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
