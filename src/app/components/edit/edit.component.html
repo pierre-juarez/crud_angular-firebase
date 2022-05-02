@@ -1,1 +1,18 @@
 <h1>Edit post's</h1>
+
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()" novalidate>
+  <div class="mb-3">
+    <label for="" class="form-label">Title</label>
+    <input formControlName="title" type="text" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label for="" class="form-label">Content</label>
+    <input formControlName="content" type="text" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label for="" class="form-label">Author</label>
+    <input formControlName="author" type="text" class="form-control" required>
+  </div>
+  <button [routerLink]="['']" class="btn btn-primary mx-1"><i class="fa-solid fa-circle-arrow-left"></i></button>
+  <button [disabled]="!editForm.valid" type="submit" class="btn btn-success">Update post <i class="fa-solid fa-file"></i></button>
+</form>

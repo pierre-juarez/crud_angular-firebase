@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+/** Importamos los componentes necesarios */
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { PostService } from 'src/app/post.service';
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -7,9 +12,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateComponent implements OnInit {
 
-  constructor() { }
+  public postForm : FormGroup;
+
+  constructor(
+    public postService : PostService,
+    public formBuilder : FormBuilder,
+    public router : Router
+  ) { 
+    this.postForm = this.formBuilder.group({
+      title : [''],
+      content: [''],
+      author : ['']
+    })
+  }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(){
+    this.postService.createPost(this.postForm.value);
+    this.router.navigate(['']);
   }
 
 }
